@@ -278,4 +278,11 @@ footer a {
     font-size: 1.25rem;
   }
 }
+
+/* =========================
+   QUIZ SECTION SCROLLBAR
+========================= */
+#level-chain-wrapper::-webkit-scrollbar {
+  display: none;
+}
     
