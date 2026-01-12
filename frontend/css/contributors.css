@@ -1,81 +1,262 @@
-/* contributors.css */
+/* contributors.css (page-specific)
+   Matches the classic cream/gold theme defined in style.css.
+*/
 
-:root {
-  --primary: #0d0c1d;
-  --secondary: #1a1a2e;
-  --accent: #0f3460;
-  --highlight: #e94560;
-  --text: #fff;
-  --muted: #a0a0b0;
-  --glow: #00f7ff;
-  --border: rgb(255 255 255 / 10%);
+.contributors-page .contributors-section {
+  padding-top: 4.25rem;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.contributors-page .contributors-section > p {
+  margin-bottom: 2.1rem;
 }
 
-body {
-  background: var(--primary);
-  color: var(--text);
-  font-family: 'Exo 2', sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: var(--secondary);
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: var(--glow);
-}
-
-.logo i {
-  font-size: 1.5rem;
-}
-
-.nav a {
-  color: var(--text);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-.nav a:hover {
-  background: rgb(255 255 255 / 10%);
-}
-
-.theme-toggle {
-  background: rgb(255 255 255 / 10%);
-  padding: 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-}
-
-.hero {
+.contributors-status {
+  max-width: 980px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 0.98rem;
+  min-height: 1.5rem;
+}
+
+.contributors-status.is-error {
+  color: #a12b2b;
+}
+
+.contributors-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+@media (min-width: 1100px) {
+  .contributors-grid {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+}
+
+@keyframes oscFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contributor-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 1.35rem 1.35rem 1.15rem;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: var(--shadow-main);
+  border: 1px solid rgb(212 175 55 / 22%);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contributor-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px circle at 0% 0%, rgb(212 175 55 / 14%), transparent 45%),
+    radial-gradient(700px circle at 100% 0%, rgb(27 38 59 / 10%), transparent 45%);
+  pointer-events: none;
+}
+
+.contributor-card.is-visible {
+  animation: oscFadeUp 0.5s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contributor-card {
+    transition: none;
+  }
+  .contributor-card.is-visible {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .contributor-skeleton .sk {
+    animation: none;
+  }
+}
+
+.contributor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.contributor-card-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.contributor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(212 175 55 / 55%);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
+  flex: 0 0 auto;
+}
+
+.contributor-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.contributor-name {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--deep-navy);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contributor-meta {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.contributor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 0.82rem;
+  color: var(--deep-navy);
+  background: linear-gradient(135deg, rgb(212 175 55 / 14%), rgb(184 134 11 / 10%));
+  border: 1px solid rgb(212 175 55 / 24%);
+  white-space: nowrap;
+}
+
+.contributor-chip.is-bot {
+  background: linear-gradient(135deg, rgb(27 38 59 / 12%), rgb(212 175 55 / 10%));
+}
+
+.contributor-actions {
+  flex: 0 0 auto;
+}
+
+.contributor-github {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--deep-navy);
+  background: rgb(255 255 255 / 90%);
+  border: 1px solid rgb(212 175 55 / 24%);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.contributor-github:hover {
+  transform: scale(1.06);
+  background: rgb(255 248 231 / 95%);
+}
+
+/* Skeleton loading */
+@keyframes oscShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.contributor-skeleton {
+  border-radius: 18px;
+  padding: 1.35rem;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: var(--shadow-main);
+  border: 1px solid rgb(212 175 55 / 22%);
+}
+
+.contributor-skeleton .sk {
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgb(212 175 55 / 10%) 25%,
+    rgb(212 175 55 / 18%) 37%,
+    rgb(212 175 55 / 10%) 63%
+  );
+  background-size: 400% 100%;
+  animation: oscShimmer 1.1s ease infinite;
+}
+
+.contributor-skeleton .sk.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.contributor-skeleton .sk.line1 {
+  height: 14px;
+  width: 65%;
+  margin: 0.25rem 0 0.7rem;
+}
+
+.contributor-skeleton .sk.line2 {
+  height: 12px;
+  width: 45%;
+}
+
+@media (max-width: 720px) {
+  .contributors-page .contributors-section {
+    padding-top: 3.5rem;
+  }
+  .contributors-grid {
+    gap: 1rem;
+  }
+  .contributor-card {
+    padding: 1.1rem;
+  }
+  .contributor-card-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .contributor-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+  }
+  .contributor-meta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .contributor-avatar {
+    width: 58px;
+    height: 58px;
+  }
+  .contributor-name {
+    font-size: 1.15rem;
+  }
 }
 
 .hero h1 {
