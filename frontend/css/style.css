@@ -323,3 +323,83 @@ footer a {
 #level-chain-wrapper::-webkit-scrollbar {
   display: none;
 }
+
+/* =========================
+   DARK MODE THEME
+========================= */
+body.dark-mode {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background: rgba(30, 30, 30, 0.98);
+  border-bottom-color: #b8860b;
+}
+
+body.dark-mode .nav-links a {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .nav-links a:hover::before {
+  background: linear-gradient(90deg, #d4af37, #b8860b);
+}
+
+body.dark-mode section {
+  background: transparent;
+}
+
+body.dark-mode section h3 {
+  color: #d4af37;
+}
+
+body.dark-mode section p {
+  color: #b0b0b0;
+}
+
+body.dark-mode .card {
+  background: rgba(50, 50, 50, 0.95);
+  border-color: rgba(212, 175, 55, 0.2);
+  color: #e0e0e0;
+}
+
+body.dark-mode .card h4 {
+  color: #d4af37;
+}
+
+body.dark-mode .card p {
+  color: #b0b0b0;
+}
+
+body.dark-mode footer {
+  background: #1a1a1a;
+  color: #d4af37;
+}
+
+body.dark-mode footer a {
+  color: #ffd700;
+}
+
+body.dark-mode #scrollTopBtn {
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: #1a1a1a;
+}
+
+body.dark-mode .badge {
+  background: linear-gradient(135deg, #4a7c59, #5a9c69);
+}
+
+/* Dark mode for stats cards */
+body.dark-mode .stat-card {
+  background: rgba(50, 50, 50, 0.95);
+  border-color: rgba(212, 175, 55, 0.2);
+  color: #e0e0e0;
+}
+
+body.dark-mode .stat-label {
+  color: #b0b0b0;
+}
+
+body.dark-mode .stat-value {
+  color: #d4af37;
+}

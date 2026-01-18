@@ -34,6 +34,33 @@
 
         <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
+        <!-- Statistics Dashboard -->
+        <div class="stats-dashboard" id="statsDashboard">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-content">
+              <div class="stat-label">Total Contributors</div>
+              <div class="stat-value" id="statTotalContributors">—</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-code-merge"></i></div>
+            <div class="stat-content">
+              <div class="stat-label">Merged PRs</div>
+              <div class="stat-value" id="statTotalPRs">—</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-star"></i></div>
+            <div class="stat-content">
+              <div class="stat-label">Top Contributor</div>
+              <div class="stat-value" id="statTopContributor">—</div>
+            </div>
+          </div>
+        </div>
+
         <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
       </section>
     </main>

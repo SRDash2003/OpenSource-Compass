@@ -1,4 +1,84 @@
 /* -------------------------
+  Filter & Sort Controls
+------------------------- */
+.programs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.filter-group select:hover {
+  border-color: #d4af37;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 18, 0.1);
+}
+
+.reset-btn {
+  padding: 8px 16px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.reset-btn:hover {
+  background: #c0392b;
+}
+
+@media (max-width: 768px) {
+  .programs-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group select,
+  .reset-btn {
+    width: 100%;
+  }
+}
+
+/* -------------------------
   Program Card Container
 ------------------------- */
 .program-card {

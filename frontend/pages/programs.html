@@ -36,6 +36,38 @@
       gain real-world experience through contributions.
     </p>
 
+    <!-- Filter and Sort Controls -->
+    <div class="programs-controls">
+      <div class="filter-group">
+        <label for="difficultyFilter">Difficulty:</label>
+        <select id="difficultyFilter">
+          <option value="">All Levels</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="stipendFilter">Stipend:</label>
+        <select id="stipendFilter">
+          <option value="">All Options</option>
+          <option value="yes">Has Stipend</option>
+          <option value="no">No Stipend</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy">
+          <option value="name">Name (A-Z)</option>
+          <option value="contributors">Most Popular</option>
+        </select>
+      </div>
+
+      <button id="resetFilters" class="reset-btn">Reset Filters</button>
+    </div>
+
     <div class="card-grid" id="programs-grid"></div>
   </section>
 </main>

@@ -35,6 +35,7 @@ async function initContributorsPage() {
     allContributors = cached;
     visibleContributors = cached;
     setStatus('');
+    updateStatsDashboard(cached);
     renderContributorsGrid(grid, visibleContributors);
     void refreshInBackground();
   } else {
@@ -54,6 +55,7 @@ async function refreshInBackground() {
     visibleContributors = enriched;
     writeCache(enriched);
 
+    updateStatsDashboard(enriched);
     const grid = document.getElementById('contributors-grid');
     if (grid) renderContributorsGrid(grid, visibleContributors);
   } catch {
@@ -76,6 +78,7 @@ async function loadAndRender() {
     writeCache(enriched);
 
     setStatus('');
+    updateStatsDashboard(enriched);
     renderContributorsGrid(grid, visibleContributors);
   } catch (err) {
     renderEmptyState(grid);
@@ -88,6 +91,25 @@ function setStatus(message, isError = false) {
   if (!el) return;
   el.textContent = message || '';
   el.classList.toggle('is-error', Boolean(isError));
+}
+
+function updateStatsDashboard(contributors) {
+  if (!Array.isArray(contributors) || contributors.length === 0) {
+    return;
+  }
+
+  const totalContributors = contributors.length;
+  const totalMergedPRs = contributors.reduce((sum, c) => sum + (Number.isFinite(c?.merged_prs) ? c.merged_prs : 0), 0);
+  const topContributor = contributors[0];
+  const topContributorName = topContributor?.login || 'Unknown';
+
+  const statTotalContributors = document.getElementById('statTotalContributors');
+  const statTotalPRs = document.getElementById('statTotalPRs');
+  const statTopContributor = document.getElementById('statTopContributor');
+
+  if (statTotalContributors) statTotalContributors.textContent = totalContributors.toLocaleString();
+  if (statTotalPRs) statTotalPRs.textContent = totalMergedPRs.toLocaleString();
+  if (statTopContributor) statTopContributor.textContent = topContributorName;
 }
 
 function renderEmptyState(grid) {
